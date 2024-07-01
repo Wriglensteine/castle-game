@@ -1,0 +1,63 @@
+link=siegeUnits.csv,unit1,unit2,unit3,unit4
+macro=element,(resourceValue),(cardNum),(x),(y),(xwidth),(ywidth)
+    if = (resourceValue) = "K"
+        text = (cardNum), knight,(x),(y),(xwidth),(ywidth),center,wwcenter
+        ;image=(cardNum),icon_wood.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceValue) = "L"
+        text = (cardNum), ladder,(x),(y),(xwidth),(ywidth),center,wwcenter
+        ;image=(cardNum),icon_stone.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceValue) = "C"
+        text = (cardNum), catapult,(x),(y),(xwidth),(ywidth),center,wwcenter
+        ;image=(cardNum),icon_water.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceValue) = "S"
+        text = (cardNum), sapper,(x),(y),(xwidth),(ywidth),center,wwcenter
+        ;image=(cardNum),icon_land.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceValue) = "T"
+        text = (cardNum), trebuchet,(x),(y),(xwidth),(ywidth),center,wwcenter
+        ;image=(cardNum),icon_flowers.png, (x),(y),(xwidth),(ywidth)
+    endif
+end
+dpi=300
+oversample=2
+
+[numCards]=4
+[all]=1-[numCards]
+[allbacks]={[numCards]+1}-{[numCards]*2}
+[darkest]=#182d41
+[darker]=#20486c
+[dark]=#683535
+[light]=#8facc7
+[lighter]=#8facc7
+[darkgrey]=#182d41
+[grey]=#20486c
+[lightgrey]=#8a8a8a
+[textcolor]=[darker]
+
+PAGE=21,29.7,PORTRAIT,HV,#FFFFFF,[allbacks]
+CARDSIZE=6.3,8.8
+
+border=rounded, [darkest], 0.5
+font= "arial", 13, TB, [textcolor]
+[number]=[unit1:1,1]
+[type]=[unit1:2,1]
+text = [all], [number],0.3, 0.7, 3, 3,center,wwcenter
+element=[type],[all],1.6,0.7,3,3
+[number]=[unit2:1,1]
+[type]=[unit2:2,1]
+text = [all], [number],0.3, 1.7, 3, 3,center,wwcenter
+element=[type],[all],1.6,1.7,3,3
+[number]=[unit3:1,1]
+[type]=[unit3:2,1]
+text = [all], [number],0.3, 2.7, 3, 3,center,wwcenter
+element=[type],[all],1.6,2.7,3,3
+[number]=[unit4:1,1]
+[type]=[unit4:2,1]
+text = [all], [number],0.3, 3.7, 3, 3,center,wwcenter
+element=[type],[all],1.6,3.7,3,3
+; back of cards and returns
+rectangle=[allbacks],0,0,100%,100%,[darkgrey]
+POLYGON = [allbacks], 0, 0.5, 6, 6, 4, 0, [grey], [grey], 0.1
+duplex=[all],[allbacks]
+Print=duplex
+display=./cards_siege_fronts.png,1,[numCards]
+display=./cards_siege_backs.png,{[numCards]+1},{[numCards]*2}
