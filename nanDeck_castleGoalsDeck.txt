@@ -1,0 +1,36 @@
+link=castleGoals.csv,object1,object2
+dpi=300
+oversample=2
+
+[numCards]=12
+[all]=1-[numCards]
+[allbacks]={[numCards]+1}-{[numCards]*2}
+[darkest]=#182d41
+[darker]=#20486c
+[dark]=#683535
+[light]=#8facc7
+[lighter]=#8facc7
+[darkgrey]=#182d41
+[grey]=#20486c
+[lightgrey]=#8a8a8a
+[textcolor]=[darker]
+
+PAGE=21,29.7,PORTRAIT,HV,#FFFFFF,[allbacks]
+CARDSIZE=6.3,8.8
+border=rounded, [darkest], 0.5
+
+font= "arial", 13, TB, [textcolor]
+text = [all], [object1],1,0.8,4,4.5,center,wwcenter
+
+; back of cards and returns
+rectangle=[allbacks],0,0,100%,100%,[darkgrey]
+POLYGON = [allbacks], 0, 0.5, 6, 6, 4, 0, [grey], [grey], 0.1
+font= "arial", 30, TB, [light]
+text = [allbacks],[object2],1,0.8,4,4.5,center,wwcenter
+duplex=[all],[allbacks]
+Print=duplex
+display=./cards_goals_fronts.png,1,[numCards]
+display=./cards_goals_backs.png,{[numCards]+1},{[numCards]*2}
+
+; save cards with bleed
+save=[all], "./cards_numbered/card_goals{§}.png", 0, 0, 6.3, 8.8

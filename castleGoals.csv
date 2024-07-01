@@ -1,0 +1,13 @@
+object1,object2
+Have a tower three stories tall,1
+Build a wall piece on land of height 4,1
+Have 3 flower fields,1
+Have water enclosed with at least two wooden walls,2
+Enclose three spaces entirely with walls (diagonals are fine),2
+Have 3 stone towers of height 2 separate from the rest of the castle,2
+Have a continuous wall of length 8 (no repeats),3
+Have a single water region containing 7 or more tiles,3
+Have 5 wall pieces of height 2 or above,3
+Surround a wall piece with enclosed area not containing water,4
+Have only a single route to your keep that does not cross a cliff,4
+Have a tower five stories tall,4
