@@ -1,0 +1,48 @@
+link=castleBuilding.csv,object1,object2
+macro=element,(resourceValue),(cardNum),(x),(y),(xwidth),(ywidth)
+    if = (resourceValue) = "WOOD"
+        image=(cardNum),icon_wood.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceValue) = "STONE"
+        image=(cardNum),icon_stone.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceValue) = "WATER"
+        image=(cardNum),icon_water.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceValue) = "LAND"
+        image=(cardNum),icon_land.png, (x),(y),(xwidth),(ywidth)
+    elseif = (resourceValue) = "FLOWERS"
+        image=(cardNum),icon_flowers.png, (x),(y),(xwidth),(ywidth)
+    endif
+end
+dpi=300
+oversample=2
+
+[numCards]=30
+[all]=1-[numCards]
+[allbacks]={[numCards]+1}-{[numCards]*2}
+[darkest]=#182d41
+[darker]=#20486c
+[dark]=#683535
+[light]=#8facc7
+[lighter]=#8facc7
+[darkgrey]=#182d41
+[grey]=#20486c
+[lightgrey]=#8a8a8a
+[textcolor]=[darker]
+
+PAGE=21,29.7,PORTRAIT,HV,#FFFFFF,[allbacks]
+CARDSIZE=6.3,8.8
+
+border=rounded, [darkest], 0.5
+
+element=[object1],[all],1.6,0.7,3,3
+element=[object2],[all],1.6,4.7,3,3
+
+; back of cards and returns
+rectangle=[allbacks],0,0,100%,100%,[darkgrey]
+POLYGON = [allbacks], 0, 0.5, 6, 6, 4, 0, [grey], [grey], 0.1
+duplex=[all],[allbacks]
+Print=duplex
+display=./cards_trade_fronts.png,1,[numCards]
+display=./cards_trade_backs.png,{[numCards]+1},{[numCards]*2}
+
+; save cards with bleed
+save=[all], "./cards_numbered/card_trade{§}.png", 0, 0, 6.3, 8.8
